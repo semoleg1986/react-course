@@ -1,31 +1,44 @@
-import { describe, it } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-
 import App from './App';
+import Home from './pages/HomePage';
 
-describe('App', () => {
-  it('Renders hello world', () => {
-    // ARRANGE
-    render(<App />);
-    // ACT
-    // EXPECT
-    expect(
-      screen.getByRole('heading', {
-        level: 1,
-      })
-    ).toHaveTextContent('Hello World');
+test('renders home page when path is "/"', () => {
+  render(
+    <MemoryRouter>
+      <App />
+    </MemoryRouter>
+  );
+  const homeElement = screen.getByText(/welcome to my website/i);
+  expect(homeElement).toBeInTheDocument();
+});
+
+test('renders about page when path is "/about"', () => {
+  render(
+    <MemoryRouter initialEntries={['/about']}>
+      <App />
+    </MemoryRouter>
+  );
+
+  const aboutHeader = screen.getByRole('heading', { name: /about/i });
+  expect(aboutHeader).toBeInTheDocument();
+  describe('Home', () => {
+    test('renders title and components', () => {
+      render(<Home />);
+      const titleElement = screen.getByText(/welcome to my website/i);
+      const postListElement = screen.getByRole('list', { name: /post list/i });
+      expect(titleElement).toBeInTheDocument();
+      expect(postListElement).toBeInTheDocument();
+    });
   });
-  it('Render not found if invalid path', () => {
-    render(
-      <MemoryRouter initialEntries={['/this-route-does-exist']}>
-        <App />
-      </MemoryRouter>
-    );
-    expect(
-      screen.getByRole('heading', {
-        level: 1,
-      })
-    ).toHaveTextContent('404');
-  });
+});
+
+test('renders not found page when path is not defined', () => {
+  render(
+    <MemoryRouter initialEntries={['/random-path']}>
+      <App />
+    </MemoryRouter>
+  );
+  const notFoundElement = screen.getByText(/404 - Page Not Found/i);
+  expect(notFoundElement).toBeInTheDocument();
 });
