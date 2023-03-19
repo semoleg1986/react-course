@@ -16,6 +16,11 @@ header {
     justify-content: space-around;
     align-items: center;
 }
+.active {
+    color:cornflowerblue;
+}
+
 header a{
+    text-decoration: none;
     color: white;
 }
