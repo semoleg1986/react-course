@@ -66,7 +66,6 @@ class SearchBar extends React.Component {
               onChange={this.handleChange}
               placeholder="Search"
             />
-            <button type="submit">Search</button>
           </div>
         </form>
         <div className="dropdown">

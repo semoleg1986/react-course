@@ -1,12 +1,11 @@
 import SearchBar from '../components/SearchBar';
-import PostList from '../components/PostList';
+import Cards from '../components/Cards';
 
 function Home() {
   return (
     <div>
-      <h1>welcome to my website</h1>
       <SearchBar />
-      <PostList />
+      <Cards />
     </div>
   );
 }

@@ -27,3 +27,8 @@ header a{
     color: white;
 }
 
+.container {
+    padding: 20px;
+    display: flex;
+    align-content: center;
+}

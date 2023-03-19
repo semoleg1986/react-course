@@ -13,11 +13,11 @@ describe('Home', () => {
       test('renders title and components', () => {
         render(<Home />);
         const titleElement = screen.getByText(/welcome to my website/i);
-        const postListElement = screen.getByRole('list', {
+        const Cardslement = screen.getByRole('list', {
           name: /post list/i,
         });
         expect(titleElement).toBeInTheDocument();
-        expect(postListElement).toBeInTheDocument();
+        expect(CardsElement).toBeInTheDocument();
       });
     });
   });

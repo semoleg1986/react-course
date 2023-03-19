@@ -9,7 +9,7 @@ test('renders home page when path is "/"', () => {
       <App />
     </MemoryRouter>
   );
-  const homeElement = screen.getByText(/welcome to my website/i);
+  const homeElement = screen.getByText(/searchBar/i);
   expect(homeElement).toBeInTheDocument();
 });
 
