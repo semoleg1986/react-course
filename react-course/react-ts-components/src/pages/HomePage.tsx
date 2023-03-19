@@ -1,10 +1,11 @@
 import SearchBar from '../components/SearchBar';
+import PostList from '../components/PostList';
 
 function Home() {
   return (
     <div>
       <SearchBar />
-      <h1>Hello World</h1>
+      <PostList />
     </div>
   );
 }

@@ -4,12 +4,12 @@ import './SearchBar.css';
 
 function SearchBar() {
   return (
-    <div className='box'>
+    <div className="box">
       <div className="searchBar">
         <i>
           <BsSearch />
         </i>
-        <input type="text" />
+        <input type="text" placeholder="Search" />
       </div>
     </div>
   );

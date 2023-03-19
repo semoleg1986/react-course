@@ -1,0 +1,29 @@
+.post-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1rem;
+  }
+  
+  .post {
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    text-align: center;
+  }
+  
+  .post img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .post h2 {
+    margin-top: 0;
+  }
+  
+  .post-link {
+    color: blue;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
