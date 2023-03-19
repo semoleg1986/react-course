@@ -1,10 +1,5 @@
 function App() {
-  return (
-    // eslint-disable-next-line react/react-in-jsx-scope
-    <div>
-      Hello World
-    </div>
-  );
+  return <h1>Hello World</h1>;
 }
 
 export default App;
