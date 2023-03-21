@@ -1,12 +1,15 @@
-import { Link } from 'react-router-dom';
+import React from 'react';
+import { IRouter } from '../type';
 
-function NotFoundPage() {
-  return (
-    <div>
-      <h1>404 - Page Not Found</h1>
-      <Link to="/">Back home</Link>
-    </div>
-  );
+class NotFoundPage extends React.Component<IRouter> {
+  constructor(props: IRouter) {
+    super(props);
+    this.props.callback(this.props);
+  }
+
+  render(): React.ReactNode {
+    return <h2>Page not found</h2>;
+  }
 }
 
-export default NotFoundPage;
+export { NotFoundPage };

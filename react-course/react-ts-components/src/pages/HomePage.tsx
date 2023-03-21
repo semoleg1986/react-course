@@ -3,7 +3,7 @@ import React from 'react';
 import { Cards } from '../components/Cards/Cards';
 import { IRouter } from '../type';
 
-class HomePage extends React.Component<IRouter> {
+class Home extends React.Component<IRouter> {
   constructor(props: IRouter) {
     super(props);
     this.props.callback(this.props);
@@ -12,7 +12,6 @@ class HomePage extends React.Component<IRouter> {
   render(): React.ReactNode {
     return (
       <>
-        <h2>Home page</h2>
         <SearchBar />
         <Cards />
       </>
@@ -20,4 +19,4 @@ class HomePage extends React.Component<IRouter> {
   }
 }
 
-export { HomePage };
+export { Home };
