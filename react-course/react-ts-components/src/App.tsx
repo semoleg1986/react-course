@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
-import { Home } from './pages/HomePage';
-import { About } from './pages/AboutPage';
-import { NotFoundPage } from './pages/NotFoundPage';
+import { Home } from './pages/Home/HomePage';
+import { About } from './pages/About/AboutPage';
+import { NotFoundPage } from './pages/404/NotFoundPage';
 import Layout from './components/Layout';
 import { IStatePage } from './type';
 import React from 'react';
