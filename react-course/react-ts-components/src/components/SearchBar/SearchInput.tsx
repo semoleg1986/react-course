@@ -9,7 +9,7 @@ interface IMyInputProps {
   onChange: (e: React.FormEvent<HTMLInputElement>) => void;
 }
 
-class MyInput extends React.Component<IMyInputProps> {
+class SearchInput extends React.Component<IMyInputProps> {
   constructor(props: IMyInputProps) {
     super(props);
   }
@@ -26,4 +26,4 @@ class MyInput extends React.Component<IMyInputProps> {
   }
 }
 
-export { MyInput };
+export { SearchInput };

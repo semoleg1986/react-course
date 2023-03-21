@@ -1,5 +1,5 @@
 import React from 'react';
-import { MyInput } from './SearchInput';
+import { SearchInput } from './SearchInput';
 import './SearchBar.css';
 
 interface ISearchBarState {
@@ -37,7 +37,7 @@ class SearchBar extends React.Component<Record<string, never>, ISearchBarState> 
   render(): React.ReactNode {
     return (
       <div className="box">
-        <MyInput
+        <SearchInput
           type="text"
           onChange={this.onChange}
           placeholder="Search bar"
