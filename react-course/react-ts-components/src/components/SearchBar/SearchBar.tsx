@@ -6,10 +6,7 @@ interface ISearchBarState {
   value: string;
 }
 
-class SearchBar extends React.Component<
-  Record<string, never>,
-  ISearchBarState
-> {
+class SearchBar extends React.Component<Record<string, never>, ISearchBarState> {
   constructor(props: Record<string, never>) {
     super(props);
     let valueInput = localStorage.getItem('search');

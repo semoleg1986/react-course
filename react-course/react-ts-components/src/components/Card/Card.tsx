@@ -9,7 +9,7 @@ class Card extends React.Component<ICard> {
 
   render() {
     return (
-      <div className="post">
+      <div className="post" data-testid="post">
         <img src={this.props.imageUrl} alt={this.props.title} />
         <h2>{this.props.title}</h2>
         <p>{this.props.description}</p>

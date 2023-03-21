@@ -23,18 +23,9 @@ class App extends React.Component<Record<string, never>, IStatePage> {
       <div>
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route
-              index
-              element={<Home title="Home" callback={this.setTitle} />}
-            />
-            <Route
-              path="about"
-              element={<About title="About" callback={this.setTitle} />}
-            />
-            <Route
-              path="*"
-              element={<NotFoundPage title="404" callback={this.setTitle} />}
-            />
+            <Route index element={<Home title="Home" callback={this.setTitle} />} />
+            <Route path="about" element={<About title="About" callback={this.setTitle} />} />
+            <Route path="*" element={<NotFoundPage title="404" callback={this.setTitle} />} />
           </Route>
         </Routes>
       </div>

@@ -1,15 +1,10 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
-import App from './App';
-import { BrowserRouter } from 'react-router-dom';
+import { About } from './AboutPage';
 
 describe('renders learn react link', () => {
   test('render App', () => {
-    render(
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    );
+    const page = { title: 'About page', callback: () => {} };
+    render(<About {...page} />);
     expect(screen.getByText(/About/i)).toBeInTheDocument();
   });
 });
