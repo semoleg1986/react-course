@@ -19,7 +19,6 @@ export class Card extends Component<ProductProps> {
         <div className="post-category">
           category: <span>{item.category}</span>{' '}
         </div>
-        <div className="post-price">$ {item.price}</div>
       </div>
     );
   }

@@ -1,6 +1,6 @@
 import { SearchBar } from '../../components/SearchBar/SearchBar';
 import React from 'react';
-import { Card } from '../../components/Form/Card/Card';
+import { Cards } from '../../components/Cards/Cards';
 import { IRouter } from '../../components/Header/Header.props';
 
 class Home extends React.Component<IRouter> {
@@ -13,7 +13,7 @@ class Home extends React.Component<IRouter> {
     return (
       <>
         <SearchBar />
-        <Card />
+        <Cards />
       </>
     );
   }

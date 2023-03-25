@@ -13,7 +13,6 @@ import { targetRadio } from './utils/targetRadio';
 
 class FormInput extends React.Component<FormAdd, IFormValid> {
   inputTitleRef: React.RefObject<HTMLInputElement>;
-  inputPriceRef: React.RefObject<HTMLInputElement>;
   inputImageRef: React.RefObject<HTMLInputElement>;
   inputDateRef: React.RefObject<HTMLInputElement>;
   inputCategoryRefLaptops: React.RefObject<HTMLInputElement>;
@@ -25,7 +24,6 @@ class FormInput extends React.Component<FormAdd, IFormValid> {
     super(props);
     this.state = {
       titleValid: false,
-      priceValid: false,
       imageValid: false,
       imageUrl: '',
       dateValid: false,
@@ -36,7 +34,6 @@ class FormInput extends React.Component<FormAdd, IFormValid> {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.inputTitleRef = React.createRef();
-    this.inputPriceRef = React.createRef();
     this.inputImageRef = React.createRef();
     this.inputDateRef = React.createRef();
     this.inputCategoryRefLaptops = React.createRef();
@@ -101,11 +98,11 @@ class FormInput extends React.Component<FormAdd, IFormValid> {
     const product = {
       id: Math.trunc(Math.random() * 1e8),
       title: currentTitle,
-      image: (currentImage && URL.createObjectURL(currentImage)) ?? '',
+      imageUrl: (currentImage && URL.createObjectURL(currentImage)) ?? '',
       date: currentDate,
+      rules: currentRules,
       category: currentCategory,
       brand: currentBrand,
-      rules: currentRules,
     };
 
     this.setState({
@@ -175,9 +172,6 @@ class FormInput extends React.Component<FormAdd, IFormValid> {
             <span className="color-red">Error! Image not selected!</span>
           )}
         </label>
-        <div className="form-box">
-          <input type="number" name="price" placeholder="Price" />
-        </div>
         <label className="form-element">
           <span>Rules accept:</span>
           <input type="checkbox" ref={this.inputRulesRef} />

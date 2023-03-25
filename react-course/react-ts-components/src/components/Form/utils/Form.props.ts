@@ -6,7 +6,6 @@ export interface ICards {
 
 export interface IFormValid {
   titleValid: boolean;
-  priceValid: boolean;
   imageValid: boolean;
   imageUrl: string;
   dateValid: boolean;

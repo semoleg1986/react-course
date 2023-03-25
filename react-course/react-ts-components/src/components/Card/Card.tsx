@@ -20,7 +20,6 @@ class Card extends React.Component<ICard> {
         <div className="post-category">
           category: <span>{item.category}</span>{' '}
         </div>
-        <div className="post-price">$ {item.price}</div>
       </div>
     );
   }
