@@ -4,7 +4,7 @@ import { FormInput } from '../../components/Form/FormInput';
 import { ICard } from '../../components/Card/Card.props';
 import { ICards } from '../../components/Form/utils/Form.props';
 import { Card } from '../../components/Form/Card/Card';
-import '../../components/Card/Card.css';
+import '../../components/Cards/Cards.css';
 
 class Forms extends React.Component<IRouter, ICards> {
   constructor(props: IRouter) {

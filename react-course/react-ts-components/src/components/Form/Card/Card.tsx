@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { ProductProps } from '../utils/Form.type';
+import '../../../components/Card/Card.css';
 
 export class Card extends Component<ProductProps> {
   constructor(props: ProductProps) {
@@ -10,7 +11,7 @@ export class Card extends Component<ProductProps> {
     const item = this.props.product;
     return (
       <div className="post" data-testid="post">
-        <img src={item.imageUrl} alt={item.title} />
+        <img src={item.imageUrl} alt={item.title} height="200" />
         <h2>{item.title}</h2>
         <p>{item.date}</p>
         <div className="post-brand">
