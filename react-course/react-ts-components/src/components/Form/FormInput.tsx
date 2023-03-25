@@ -118,6 +118,9 @@ class FormInput extends React.Component<FormAdd, IFormValid> {
     this.clearForms();
     this.props.onAddCard(product);
     this.setState({ formMessage: true });
+    setTimeout(() => {
+      this.setState({ formMessage: false });
+    }, 3000);
   }
   render() {
     return (
@@ -210,7 +213,7 @@ class FormInput extends React.Component<FormAdd, IFormValid> {
           <button className="form-button" type="submit">
             Add new card
           </button>
-          {this.state.formMessage && <p className="form-error">Good.</p>}
+          {this.state.formMessage && <p className="form-add">Post successfully added.</p>}
         </form>
       </div>
     );
