@@ -119,70 +119,96 @@ class FormInput extends React.Component<FormAdd, IFormValid> {
   }
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <div className="form-box">
-          <input type="text" name="title" placeholder="Title" ref={this.inputTitleRef} />
-          {!this.state.titleValid && this.state.message && (
-            <span className="color-red">Error! The length must be at least 5 characters!</span>
-          )}
-        </div>
-        <div className="form-box-date">
-          <input type="date" name="date" ref={this.inputDateRef} />
-        </div>
-        <span>Brand: </span>
-        <select name="brand" ref={this.inputBrandRef}>
-          <option value="">-</option>
-          <option value="Huawei">Huawei</option>
-          <option value="Apple">Apple</option>
-          <option value="Samsung">Samsung</option>
-        </select>
-        {!this.state.brandValid && this.state.message && (
-          <span className="color-red">Error! You need to choose car or home!</span>
-        )}
-        <div className="">
-          <span>Category:</span>
-          <label className="radio-element">
+      <div className="box-form">
+        <form onSubmit={this.handleSubmit}>
+          <div className="form-box">
+            <label className="form-label">Title:</label>
             <input
-              type="radio"
-              name="category"
-              value="Smartphones"
-              ref={this.inputCategoryRefSmartphones}
+              className="form-input"
+              type="text"
+              name="title"
+              placeholder="Enter title"
+              ref={this.inputTitleRef}
             />
-            Smartphones
-          </label>
-          <label className="radio-element">
+            {!this.state.titleValid && this.state.message && (
+              <p className="form-error">
+                The title must start with a capital letter and not contain numbers longer than 4
+                digits.
+              </p>
+            )}
+          </div>
+          <div className="form-box">
+            <label className="form-label">Date:</label>
+            <input className="form-input" type="date" name="date" ref={this.inputDateRef} />
+            {!this.state.dateValid && this.state.message && (
+              <p className="form-error">The selected date must be later than today.</p>
+            )}
+          </div>
+          <div className="form-box">
+            <label className="form-label">Brand:</label>
+            <select className="form-input" name="brand" ref={this.inputBrandRef}>
+              <option value="Huawei">Huawei</option>
+              <option value="Apple">Apple</option>
+              <option value="Samsung">Samsung</option>
+            </select>
+            {!this.state.brandValid && this.state.message && (
+              <p className="form-error">Please choose a brand.</p>
+            )}
+          </div>
+          <div className="form-box">
+            <label className="form-label">Category:</label>
+            <label className="form-radio-label">
+              <input
+                className="form-radio-input"
+                type="radio"
+                name="category"
+                value="Smartphones"
+                ref={this.inputCategoryRefSmartphones}
+              />
+              Smartphones
+            </label>
+            <label className="form-radio-label">
+              <input
+                className="form-radio-input"
+                type="radio"
+                name="category"
+                value="Laptops"
+                ref={this.inputCategoryRefLaptops}
+              />
+              Laptops
+            </label>
+            {!this.state.categoryValid && this.state.message && (
+              <p className="form-error">Please choose a category.</p>
+            )}
+          </div>
+          <div className="form-box">
+            <label className="form-label">Image:</label>
             <input
-              type="radio"
-              name="category"
-              value="Laptops"
-              ref={this.inputCategoryRefLaptops}
+              className="form-input"
+              name="imageUrl"
+              type="file"
+              accept=".jpg, .jpeg, .png"
+              id="image-input"
+              ref={this.inputImageRef}
             />
-            Laptops
-          </label>
-        </div>
-        <label className="form-box">
-          <input
-            name="imageUrl"
-            type="file"
-            accept=".jpg, .jpeg, .png"
-            id="image-input"
-            ref={this.inputImageRef}
-          />
-          {!this.state.imageValid && this.state.message && (
-            <span className="color-red">Error! Image not selected!</span>
-          )}
-        </label>
-        <label className="form-element">
-          <span>Rules accept:</span>
-          <input type="checkbox" ref={this.inputRulesRef} />
-          {!this.state.rulesValid && this.state.message && (
-            <span className="color-red">Error! It is necessary to adopt the rules!</span>
-          )}
-        </label>
-        <button id="button" type="submit">
-          Add new card
-        </button>
-      </form>
+            {!this.state.imageValid && this.state.message && (
+              <p className="form-error">Please choose a valid image file.</p>
+            )}
+          </div>
+          <div className="form-box">
+            <label className="form-checkbox-label">
+              <input className="form-checkbox-input" type="checkbox" ref={this.inputRulesRef} />I
+              accept the rules.
+            </label>
+            {!this.state.rulesValid && this.state.message && (
+              <p className="form-error">Please accept the rules.</p>
+            )}
+          </div>
+          <button className="form-button" type="submit">
+            Add new card
+          </button>
+        </form>
+      </div>
     );
   }
 }

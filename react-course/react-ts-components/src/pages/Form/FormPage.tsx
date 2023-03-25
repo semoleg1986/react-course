@@ -24,7 +24,6 @@ class Forms extends React.Component<IRouter, ICards> {
   render(): React.ReactNode {
     return (
       <div>
-        <h3>Form</h3>
         <FormInput onAddCard={this.onAddCard} />
         <div className="post-container">
           {this.state.products?.map((product) => (

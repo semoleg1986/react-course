@@ -1,75 +1,69 @@
-.form-box {
-    border: 1px solid black;
-    background-color: white;
-    width: 300px;
-    height: 25px;
-    border-radius: 10px;
+.box-form {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    padding: 10px;
-    margin-top: 20px;
-}
-.form-box-date {
-    border: 1px solid black;
-    background-color: white;
-    width: 300px;
-    height: 25px;
-    border-radius: 10px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    }
+    
+    .form-box {
     display: flex;
-    align-items: center;
-    padding: 10px;
-    margin-top: 20px;
-}
-.form-box-desc {
-    border: 1px solid black;
-    background-color: white;
-    width: 300px;
-    height: 125px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    margin-top: 20px;
-}
-.form-box-date >input{
-    flex: 1;
-    height: 20px;
-    border: none;
-    outline: none;
-    padding-left: 100px;
-    font-size: 15px;
-}
-.form-box >input {
-    flex: 1;
-    height: 20px;
-    border: none;
-    outline: none;
-    padding-left: 10px;
-    font-size: 15px;
-}
-
-.form-box input:focus {
-    outline: none;
-}
-select {
-    margin-top: 20px;
-    width: 270px;
+    flex-direction: column;
     margin-bottom: 20px;
-}
-.radio-element {
-    margin-left: 10px;
-}
-
-button {
-    margin-top: 20px;
-    margin-left: 160px;
-    background-color: #4CAF50; /* Green */
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
+    width: 100%;
+    }
+    
+    .form-label {
     font-size: 16px;
-    border-radius: 10px;
-  }
+    font-weight: 600;
+    margin-bottom: 5px;
+    }
+    
+    .form-input {
+    font-size: 16px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    }
+    
+    .form-radio-label {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    }
+    
+    .form-radio-input {
+    margin-right: 5px;
+    }
+    
+    .form-checkbox-label {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    }
+    
+    .form-checkbox-input {
+    margin-right: 5px;
+    }
+    
+    .form-error {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+    }
+    
+    .form-button {
+    font-size: 16px;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    }
+    
+    .form-button:hover {
+    background-color: #0062cc;
+    }
