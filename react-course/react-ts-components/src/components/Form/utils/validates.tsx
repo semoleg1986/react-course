@@ -1,5 +1,5 @@
 export const validateTitle = (name: string) => {
-  if (name.length > 3 && /^[A-Z]/.test(name) && !/^\d/.test(name)) {
+  if (/^[A-ZА-ЯЁ][a-zA-Zа-яА-ЯёЁ\s\d\w]*$/u.test(name) && name.length > 3) {
     return true;
   }
   return false;

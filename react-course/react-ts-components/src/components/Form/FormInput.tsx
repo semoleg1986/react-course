@@ -31,6 +31,7 @@ class FormInput extends React.Component<FormAdd, IFormValid> {
       brandValid: false,
       categoryValid: false,
       message: false,
+      formMessage: false,
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.inputTitleRef = React.createRef();
@@ -116,6 +117,7 @@ class FormInput extends React.Component<FormAdd, IFormValid> {
 
     this.clearForms();
     this.props.onAddCard(product);
+    this.setState({ formMessage: true });
   }
   render() {
     return (
@@ -208,6 +210,7 @@ class FormInput extends React.Component<FormAdd, IFormValid> {
           <button className="form-button" type="submit">
             Add new card
           </button>
+          {this.state.formMessage && <p className="form-error">Good.</p>}
         </form>
       </div>
     );

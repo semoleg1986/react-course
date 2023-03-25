@@ -13,4 +13,5 @@ export interface IFormValid {
   brandValid: boolean;
   categoryValid: boolean;
   message: boolean;
+  formMessage: boolean;
 }
