@@ -60,7 +60,7 @@ class FormInput extends React.Component<FormAdd, IFormValid> {
     this.setState({ rulesValid: rules });
     this.setState({ brandValid: brand });
 
-    if (title && image && date && category && rules) return true;
+    if (title && image && date && category && rules && brand) return true;
     return false;
   }
 
@@ -147,6 +147,7 @@ class FormInput extends React.Component<FormAdd, IFormValid> {
           <div className="form-box">
             <label className="form-label">Brand:</label>
             <select className="form-input" name="brand" ref={this.inputBrandRef}>
+              <option value="">-</option>
               <option value="Huawei">Huawei</option>
               <option value="Apple">Apple</option>
               <option value="Samsung">Samsung</option>
