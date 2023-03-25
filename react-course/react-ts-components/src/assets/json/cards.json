@@ -1,58 +1,82 @@
-{"products": [
+{"products":[
     {
-      "id": 1,
-      "title": "Product 1",
-      "price": 10.99,
-      "description": "Description for product 1",
-      "imageUrl": "https://picsum.photos/id/1/300/200"
+      "id":1,
+      "title":"iPhone 9",
+      "price":549,
+      "brand":"Apple",
+      "category":"smartphones",
+      "imageUrl": "https://picsum.photos/id/1/300/200",
+      "rules": false,
+      "date": "07.12.2020"
     },
     {
-      "id": 2,
-      "title": "Product 2",
-      "price": 15.99,
-      "description": "Description for product 2",
-      "imageUrl": "https://picsum.photos/id/2/300/200"
+      "id":2,
+      "title":"iPhone X",
+      "price":899,
+      "brand":"Apple",
+      "category":"smartphones",
+      "imageUrl": "https://picsum.photos/id/2/300/200",
+      "rules": false,
+      "date": "07.12.2020"
     },
     {
-      "id": 3,
-      "title": "Product 3",
-      "price": 20.99,
-      "description": "Description for product 3",
-      "imageUrl": "https://picsum.photos/id/3/300/200"
+      "id":3,
+      "title":"Samsung Universe 9",
+      "price":1249,
+      "brand":"Samsung",
+      "category":"smartphones",
+      "imageUrl": "https://picsum.photos/id/3/300/200",
+      "rules": false,
+      "date": "07.12.2020"
     },
     {
-      "id": 4,
-      "title": "Product 4",
-      "price": 25.99,
-      "description": "Description for product 4",
-      "imageUrl": "https://picsum.photos/id/4/300/200"
+      "id":4,
+      "title":"OPPOF19",
+      "price":280,
+      "brand":"OPPO",
+      "category":"smartphones",
+      "imageUrl": "https://picsum.photos/id/4/300/200",
+      "rules": false,
+      "date": "07.12.2020"
     },
     {
-      "id": 5,
-      "title": "Product 5",
-      "price": 30.99,
-      "description": "Description for product 5",
-      "imageUrl": "https://picsum.photos/id/5/300/200"
+      "id":5,
+      "title":"Huawei P30",
+      "price":499,
+      "brand":"Huawei",
+      "category":"smartphones",
+      "imageUrl": "https://picsum.photos/id/5/300/200",
+      "rules": false,
+      "date": "07.12.2020"
     },
     {
-      "id": 6,
-      "title": "Product 6",
-      "price": 35.99,
-      "description": "Description for product 6",
-      "imageUrl": "https://picsum.photos/id/6/300/200"
+      "id":6,
+      "title":"MacBook Pro",
+      "price":1749,
+      "brand":"Apple",
+      "category":"laptops",
+      "imageUrl": "https://picsum.photos/id/7/300/200",
+      "rules": false,
+      "date": "07.12.2020"
     },
     {
-      "id": 7,
-      "title": "Product 7",
-      "price": 40.99,
-      "description": "Description for product 7",
-      "imageUrl": "https://picsum.photos/id/7/300/200"
+      "id":7,
+      "title":"Samsung Galaxy Book",
+      "price":1499,
+      "brand":"Samsung",
+      "category":"laptops",
+      "imageUrl": "https://picsum.photos/id/7/300/200",
+      "rules": false,
+      "date": "07.12.2020"
     },
     {
-      "id": 8,
-      "title": "Product 8",
-      "price": 45.99,
-      "description": "Description for product 8",
-      "imageUrl": "https://picsum.photos/id/8/300/200"
+      "id":8,
+      "title":"Microsoft Surface Laptop 4",
+      "price":1499,
+      "brand":"Microsoft Surface",
+      "category":"laptops",
+      "imageUrl": "https://picsum.photos/id/8/300/200",
+      "rules": false,
+      "date": "07.12.2020"
     }
-  ]}
+]} 

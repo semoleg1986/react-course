@@ -1,14 +1,13 @@
-import React from 'react';
-import { ICard } from './Card.props';
-import './Card.css';
+import React, { Component } from 'react';
+import { ProductProps } from '../utils/Form.type';
 
-class Card extends React.Component<ICard> {
-  constructor(props: ICard) {
+export class Card extends Component<ProductProps> {
+  constructor(props: ProductProps) {
     super(props);
   }
 
   render() {
-    const item = this.props;
+    const item = this.props.product;
     return (
       <div className="post" data-testid="post">
         <img src={item.imageUrl} alt={item.title} />
@@ -25,5 +24,3 @@ class Card extends React.Component<ICard> {
     );
   }
 }
-
-export { Card };

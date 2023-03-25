@@ -1,9 +1,10 @@
 import { Route, Routes } from 'react-router-dom';
 import { Home } from './pages/Home/HomePage';
+import { Forms } from './pages/Form/FormPage';
 import { About } from './pages/About/AboutPage';
 import { NotFoundPage } from './pages/404/NotFoundPage';
-import Layout from './components/Layout';
-import { IStatePage } from './type';
+import { Layout } from './components/Layout';
+import { IStatePage } from './components/Header/Header.props';
 import React from 'react';
 class App extends React.Component<Record<string, never>, IStatePage> {
   constructor(props: Record<string, never>) {
@@ -22,8 +23,9 @@ class App extends React.Component<Record<string, never>, IStatePage> {
     return (
       <div>
         <Routes>
-          <Route path="/" element={<Layout />}>
+          <Route path="/" element={<Layout title={this.state.title} />}>
             <Route index element={<Home title="Home" callback={this.setTitle} />} />
+            <Route path="form" element={<Forms title="Form" callback={this.setTitle} />} />
             <Route path="about" element={<About title="About" callback={this.setTitle} />} />
             <Route path="*" element={<NotFoundPage title="404" callback={this.setTitle} />} />
           </Route>

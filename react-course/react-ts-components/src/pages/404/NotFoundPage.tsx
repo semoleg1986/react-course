@@ -1,5 +1,5 @@
 import React from 'react';
-import { IRouter } from '../../type';
+import { IRouter } from '../../components/Header/Header.props';
 
 class NotFoundPage extends React.Component<IRouter> {
   constructor(props: IRouter) {

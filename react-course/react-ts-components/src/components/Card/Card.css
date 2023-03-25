@@ -3,10 +3,27 @@
     margin-bottom: 32px;
   }
   
-  .post h2{
+  .post h2 {
     padding-bottom: 20px;
   }
-  
+
+  .post p  {
+    padding-top: 10px;
+  }
+  .post-brand {
+    margin-top: 10px;
+  }  
+  .post-brand span {
+    color: burlywood;
+    font-weight: bolder;
+  }
+  .post-category {
+    margin-top: 10px;
+  }  
+  .post-category span {
+    color: slateblue;
+    font-weight: bolder;
+  }
   .post-price {
     font-weight: bold;
     font-size: 1.2rem;
