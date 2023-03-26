@@ -33,7 +33,7 @@ describe('validateImageUrl', () => {
 
 describe('validateDate', () => {
   it('returns true if the date is valid', () => {
-    const validDate = '2023-03-26';
+    const validDate = '2023-03-30';
     expect(validateDate(validDate)).toBe(true);
   });
 

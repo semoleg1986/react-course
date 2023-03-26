@@ -80,7 +80,6 @@ class FormInput extends React.Component<FormAdd, IFormValid> {
     event.preventDefault();
     const isAllValid = this.checkAllValidates();
 
-    // Variables
     const currentTitle = this.inputTitleRef.current?.value ?? '';
     const currentImage = this.inputImageRef.current?.files?.[0];
     const currentDate = this.inputDateRef.current?.value ?? '';
