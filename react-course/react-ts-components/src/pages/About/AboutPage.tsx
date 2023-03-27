@@ -11,6 +11,7 @@ class About extends React.Component<IRouter> {
     return (
       <div>
         <h1>About</h1>
+        <p>Some text</p>
       </div>
     );
   }
