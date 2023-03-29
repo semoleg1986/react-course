@@ -1,22 +1,20 @@
-import React from 'react';
+import { Routes, Route } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
-import { IRouter, IStatePage } from './Header.props';
 
-class Header extends React.Component<IStatePage> {
-  constructor(props: IRouter) {
-    super(props);
-  }
+const Header = () => {
+  return (
+    <header>
+      <h1>
+        <Routes>
+          <Route path="/" element={'Home'} />
+          <Route path="/about" element={'About Us'} />
+          <Route path="*" element={'Not Found'} />
+        </Routes>
+      </h1>
+      <NavLink to="/">Home</NavLink>
+      <NavLink to="/about">About</NavLink>
+    </header>
+  );
+};
 
-  render(): React.ReactNode {
-    return (
-      <header>
-        <h1>{this.props.title}</h1>
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="/form">Form</NavLink>
-        <NavLink to="/about">About</NavLink>
-      </header>
-    );
-  }
-}
-
-export { Header };
+export default Header;

@@ -1,22 +1,14 @@
 import { SearchBar } from '../../components/SearchBar/SearchBar';
-import React from 'react';
+
 import { Cards } from '../../components/Cards/Cards';
-import { IRouter } from '../../components/Header/Header.props';
 
-class Home extends React.Component<IRouter> {
-  constructor(props: IRouter) {
-    super(props);
-    this.props.callback(this.props);
-  }
+const Home = () => {
+  return (
+    <>
+      <SearchBar />
+      <Cards />
+    </>
+  );
+};
 
-  render(): React.ReactNode {
-    return (
-      <>
-        <SearchBar />
-        <Cards />
-      </>
-    );
-  }
-}
-
-export { Home };
+export default Home;
