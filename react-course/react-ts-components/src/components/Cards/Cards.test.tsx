@@ -1,4 +1,4 @@
-import { Cards } from './Cards';
+import Cards from './Cards';
 import { render, screen } from '@testing-library/react';
 
 describe('renders learn react link', () => {

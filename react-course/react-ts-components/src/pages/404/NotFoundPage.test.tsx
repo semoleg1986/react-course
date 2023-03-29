@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import { NotFoundPage } from './NotFoundPage';
+import NotFoundPage from './NotFoundPage';
 
 describe('renders learn react link', () => {
   test('render App', () => {
