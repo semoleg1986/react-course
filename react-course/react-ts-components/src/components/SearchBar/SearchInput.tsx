@@ -1,16 +1,16 @@
-import React from 'react';
+import React, { FormEvent } from 'react';
 import './SearchBar.css';
 import { BsSearch } from 'react-icons/bs';
 
-interface IMyInputProps {
+interface ISearchInputProps {
   type: string;
   placeholder: string;
   value: string;
-  onChange: (e: React.FormEvent<HTMLInputElement>) => void;
+  onChange: (e: FormEvent<HTMLInputElement>) => void;
 }
 
-class SearchInput extends React.Component<IMyInputProps> {
-  constructor(props: IMyInputProps) {
+class SearchInput extends React.Component<ISearchInputProps> {
+  constructor(props: ISearchInputProps) {
     super(props);
   }
 

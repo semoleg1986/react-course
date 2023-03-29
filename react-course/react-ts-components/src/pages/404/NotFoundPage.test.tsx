@@ -3,8 +3,7 @@ import NotFoundPage from './NotFoundPage';
 
 describe('renders learn react link', () => {
   test('render App', () => {
-    const page = { title: 'Page not found', callback: () => {} };
-    render(<NotFoundPage {...page} />);
+    render(<NotFoundPage />);
     expect(screen.getByText(/Page not found/i)).toBeInTheDocument();
   });
 });
