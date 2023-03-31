@@ -9,7 +9,7 @@ interface Card {
 const Card = ({ product }: Card) => {
   return (
     <div className="post" data-testid="post">
-      <img src={product.imageUrl} alt={product.title} />
+      <img src={product.imageUrl} alt={product.title} height="200" />
       <h2>{product.title}</h2>
       <p>{product.date}</p>
       <div className="post-brand">

@@ -1,7 +1,9 @@
-import { ICard } from '../../Card/Card.props';
 export type FormAdd = {
-  onAddCard: (newCard: ICard) => void;
-};
-export type ProductProps = {
-  product: ICard;
+  id?: number;
+  title: string;
+  imageUrl: string;
+  date: string;
+  rules: boolean;
+  category: string;
+  brand: string;
 };

@@ -1,129 +1,72 @@
-import React, { useState, useRef } from 'react';
+import { useForm, SubmitHandler } from 'react-hook-form';
+import React, { useState } from 'react';
 import './FormInput.css';
 import { FormAdd } from './utils/Form.type';
-import {
-  validateTitle,
-  validateImageUrl,
-  validateDate,
-  validateCategory,
-  validateBrand,
-} from './utils/validates';
-import { targetRadio } from './utils/targetRadio';
+import { ICard } from '../Card/Card.props';
 
-const FormInput: React.FC<FormAdd> = ({ onAddCard }) => {
-  const [titleValid, setTitleValid] = useState(false);
-  const [imageValid, setImageValid] = useState(false);
-  const [dateValid, setDateValid] = useState(false);
-  const [rulesValid, setRulesValid] = useState(false);
-  const [brandValid, setBrandValid] = useState(false);
-  const [categoryValid, setCategoryValid] = useState(false);
-  const [message, setMessage] = useState(false);
-  const [formMessage, setFormMessage] = useState(false);
-
-  const inputTitleRef = useRef<HTMLInputElement>(null);
-  const inputImageRef = useRef<HTMLInputElement>(null);
-  const inputDateRef = useRef<HTMLInputElement>(null);
-  const inputCategoryRefLaptops = useRef<HTMLInputElement>(null);
-  const inputCategoryRefSmartphones = useRef<HTMLInputElement>(null);
-  const inputRulesRef = useRef<HTMLInputElement>(null);
-  const inputBrandRef = useRef<HTMLSelectElement>(null);
-
-  const checkAllValidates = () => {
-    const title = validateTitle(inputTitleRef?.current?.value ?? '');
-    const image = validateImageUrl(inputImageRef?.current?.value ?? '');
-    const date = validateDate(inputDateRef.current?.value ?? '');
-    const category = validateCategory(
-      targetRadio(inputCategoryRefLaptops, inputCategoryRefSmartphones)
-    );
-    const rules = inputRulesRef?.current?.checked ?? false;
-    const brand = validateBrand(inputBrandRef.current?.value ?? '');
-
-    setRulesValid(rules);
-    setTitleValid(title);
-    setImageValid(image);
-    setDateValid(date);
-    setCategoryValid(category);
-    setRulesValid(rules);
-    setBrandValid(brand);
-
-    if (title && image && date && category && rules && brand) return true;
-    return false;
-  };
-
-  const clearForms = () => {
-    if (inputTitleRef.current) inputTitleRef.current.value = '';
-    if (inputImageRef.current) inputImageRef.current.value = '';
-    if (inputDateRef.current) inputDateRef.current.value = '';
-    if (inputCategoryRefLaptops.current) inputCategoryRefLaptops.current.checked = false;
-    if (inputCategoryRefSmartphones.current) inputCategoryRefSmartphones.current.checked = false;
-    if (inputRulesRef.current) inputRulesRef.current.checked = false;
-    if (inputBrandRef.current) inputBrandRef.current.value = '';
-  };
-
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
-    event.preventDefault();
-    const isAllValid = checkAllValidates();
-
-    const currentTitle = inputTitleRef.current?.value ?? '';
-    const currentImage = inputImageRef.current?.files?.[0];
-    const currentDate = inputDateRef.current?.value ?? '';
-    const currentCategory = targetRadio(inputCategoryRefLaptops, inputCategoryRefSmartphones);
-    const currentRules = inputRulesRef?.current?.checked ?? false;
-    const currentBrand = inputBrandRef.current?.value ?? '';
-
-    if (!isAllValid) {
-      setMessage(true);
-      return;
-    }
-
+const FormInput: React.FC<{
+  onAddCard: (product: ICard) => void;
+}> = ({ onAddCard }) => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm<FormAdd>();
+  const [formMessage, setFormMessage] = useState<boolean>(false);
+  const handleProduct: SubmitHandler<FormAdd> = (data) => {
     const product = {
-      id: Math.trunc(Math.random() * 1e8),
-      title: currentTitle,
-      imageUrl: (currentImage && URL.createObjectURL(currentImage)) ?? '',
-      date: currentDate,
-      rules: currentRules,
-      category: currentCategory,
-      brand: currentBrand,
+      id: Date.now(),
+      ...data,
+      imageUrl: URL.createObjectURL(data.imageUrl[0] as unknown as Blob),
     };
     onAddCard(product);
-    clearForms();
+    reset();
     setFormMessage(true);
+    setTimeout(() => setFormMessage(false), 4000);
   };
   return (
     <div className="box-form">
-      <form onSubmit={handleSubmit}>
+      <form role="form" onSubmit={handleSubmit(handleProduct)}>
         <div className="form-box">
           <label className="form-label">Title:</label>
           <input
             className="form-input"
             type="text"
-            name="title"
+            id="title"
             placeholder="Enter title"
-            ref={inputTitleRef}
+            {...register('title', {
+              required: 'The field is required',
+              pattern: {
+                value: /^[A-Z].*/,
+                message: 'Start with a capital letter',
+              },
+            })}
           />
-          {!titleValid && message && (
-            <p className="form-error">
-              The title must start with a capital letter and not contain numbers longer than 4
-              digits.
-            </p>
-          )}
+          <p className="form-error">{errors.title?.message && errors.title.message}</p>
         </div>
         <div className="form-box">
           <label className="form-label">Date:</label>
-          <input className="form-input" type="date" name="date" ref={inputDateRef} />
-          {!dateValid && message && (
-            <p className="form-error">The selected date must be later than today.</p>
-          )}
+          <input
+            className="form-input"
+            type="date"
+            id="date"
+            {...register('date', { required: 'The field is required' })}
+          />
+          <p className="form-error">{errors.date?.message && errors.date.message}</p>
         </div>
         <div className="form-box">
           <label className="form-label">Brand:</label>
-          <select className="form-input" name="brand" ref={inputBrandRef}>
+          <select
+            className="form-input"
+            {...register('brand', { required: 'The field is required' })}
+          >
             <option value="">-</option>
             <option value="Huawei">Huawei</option>
             <option value="Apple">Apple</option>
             <option value="Samsung">Samsung</option>
           </select>
-          {!brandValid && message && <p className="form-error">Please choose a brand.</p>}
+          <p className="form-error">{errors.brand?.message && errors.brand.message}</p>
         </div>
         <div className="form-box">
           <label className="form-label">Category:</label>
@@ -131,9 +74,11 @@ const FormInput: React.FC<FormAdd> = ({ onAddCard }) => {
             <input
               className="form-radio-input"
               type="radio"
-              name="category"
+              id="smartphones"
               value="Smartphones"
-              ref={inputCategoryRefSmartphones}
+              {...register('category', {
+                required: 'The field is required',
+              })}
             />
             Smartphones
           </label>
@@ -141,42 +86,49 @@ const FormInput: React.FC<FormAdd> = ({ onAddCard }) => {
             <input
               className="form-radio-input"
               type="radio"
-              name="category"
               value="Laptops"
-              ref={inputCategoryRefLaptops}
+              id="laptops"
+              {...register('category', {
+                required: 'The field is required',
+              })}
             />
             Laptops
           </label>
-          {!categoryValid && message && <p className="form-error">Please choose a category.</p>}
+          <p className="form-error">{errors.category?.message && errors.category.message}</p>
         </div>
         <div className="form-box">
           <label className="form-label">Image:</label>
           <input
             className="form-input"
-            name="imageUrl"
             type="file"
             accept=".jpg, .jpeg, .png"
-            id="image-input"
-            ref={inputImageRef}
+            id="imageUrl"
+            {...register('imageUrl', {
+              required: 'The field is required',
+            })}
           />
-          {!imageValid && message && (
-            <p className="form-error">Please choose a valid image file.</p>
-          )}
+          <p className="form-error">{errors.imageUrl?.message && errors.imageUrl.message}</p>
         </div>
         <div className="form-box">
           <label className="form-checkbox-label">
-            <input className="form-checkbox-input" type="checkbox" ref={inputRulesRef} />I accept
-            the rules.
+            <input
+              id="rules"
+              className="form-checkbox-input"
+              type="checkbox"
+              {...register('rules', {
+                required: 'The field is required',
+              })}
+            />
+            I accept the rules.
           </label>
-          {!rulesValid && message && <p className="form-error">Please accept the rules.</p>}
+          <p className="form-error">{errors.rules?.message && errors.rules.message}</p>
         </div>
         <button className="form-button" type="submit">
           Add new card
         </button>
-        {formMessage && <p className="form-add">Post successfully added.</p>}
+        {formMessage && <p className="form-add">The data has been added to your list</p>}
       </form>
     </div>
   );
 };
-
-export { FormInput };
+export default FormInput;
