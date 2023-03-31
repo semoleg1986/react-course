@@ -5,7 +5,7 @@ describe('ICard interface', () => {
       id: 1,
       title: 'Test Card',
       imageUrl: 'https://example.com/image.png',
-      date: '2022-01-01',
+      date: '2024-12-01',
       rules: true,
       category: 'Test Category',
       brand: 'Test Brand',
