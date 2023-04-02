@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { vi } from 'vitest';
 import FormInput from './FormInput';
 
@@ -13,6 +13,9 @@ describe('FormInput', () => {
     expect(screen.getByText('Image:')).toBeInTheDocument();
     expect(screen.getByText('I accept the rules.')).toBeInTheDocument();
     expect(screen.getByRole('button', { name: 'Add new card' })).toBeInTheDocument();
+
+    fireEvent.change(screen.getByLabelText('Title:'), { target: { value: 'Test Product' } });
+    fireEvent.change(screen.getByLabelText('Date:'), { target: { value: '2023-04-02' } });
 
     expect(form).toBeTruthy();
     expect(form).toBeDefined();

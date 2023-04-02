@@ -29,7 +29,9 @@ const FormInput: React.FC<{
     <div className="box-form">
       <form role="form" onSubmit={handleSubmit(handleProduct)}>
         <div className="form-box">
-          <label className="form-label">Title:</label>
+          <label className="form-label" htmlFor="title">
+            Title:
+          </label>
           <input
             className="form-input"
             type="text"
@@ -46,7 +48,9 @@ const FormInput: React.FC<{
           <p className="form-error">{errors.title?.message && errors.title.message}</p>
         </div>
         <div className="form-box">
-          <label className="form-label">Date:</label>
+          <label className="form-label" htmlFor="date">
+            Date:
+          </label>
           <input
             className="form-input"
             type="date"
@@ -56,7 +60,9 @@ const FormInput: React.FC<{
           <p className="form-error">{errors.date?.message && errors.date.message}</p>
         </div>
         <div className="form-box">
-          <label className="form-label">Brand:</label>
+          <label className="form-label" htmlFor="brand">
+            Brand:
+          </label>
           <select
             className="form-input"
             {...register('brand', { required: 'The field is required' })}
@@ -69,7 +75,9 @@ const FormInput: React.FC<{
           <p className="form-error">{errors.brand?.message && errors.brand.message}</p>
         </div>
         <div className="form-box">
-          <label className="form-label">Category:</label>
+          <label className="form-label" htmlFor="category">
+            Category:
+          </label>
           <label className="form-radio-label">
             <input
               className="form-radio-input"
