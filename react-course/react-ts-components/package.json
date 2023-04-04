@@ -3,10 +3,12 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage":"https://semoleg1986.github.io/rsschool-cv/react-course/react-ts-components",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
+    "deploy": "npm run build && npm gh-pages -d dist -e react-ts-components",
     "lint": "eslint . --fix",
     "test": "vitest run --coverage "
   },
