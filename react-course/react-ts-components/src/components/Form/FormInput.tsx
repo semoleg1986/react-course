@@ -12,7 +12,7 @@ const FormInput: React.FC<{
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm<FormAdd>();
+  } = useForm<FormAdd>({ reValidateMode: 'onSubmit' });
   const [formMessage, setFormMessage] = useState<boolean>(false);
   const handleProduct: SubmitHandler<FormAdd> = (data) => {
     const product = {
@@ -20,14 +20,14 @@ const FormInput: React.FC<{
       ...data,
       imageUrl: URL.createObjectURL(data.imageUrl[0] as unknown as Blob),
     };
-    onAddCard(product);
     reset();
+    onAddCard(product);
     setFormMessage(true);
     setTimeout(() => setFormMessage(false), 4000);
   };
   return (
     <div className="box-form">
-      <form role="form" onSubmit={handleSubmit(handleProduct)}>
+      <form role="form" onSubmit={handleSubmit(handleProduct)} noValidate>
         <div className="form-box">
           <label className="form-label" htmlFor="title">
             Title:
