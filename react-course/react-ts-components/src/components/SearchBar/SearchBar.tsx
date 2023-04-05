@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { SearchInput } from './SearchInput';
 import './SearchBar.css';
+import { BsSearch } from 'react-icons/bs';
 
 const SearchBar = () => {
   const [value, setValue] = useState<string>(() => localStorage.getItem('search') ?? '');
@@ -15,7 +15,12 @@ const SearchBar = () => {
 
   return (
     <div className="box">
-      <SearchInput type="text" onChange={handleChange} placeholder="Search bar" value={value} />
+      <div className="searchBar">
+        <i>
+          <BsSearch />
+        </i>
+        <input type="text" onChange={handleChange} placeholder="Search bar" value={value} />
+      </div>
     </div>
   );
 };
