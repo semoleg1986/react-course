@@ -1,7 +1,7 @@
 export type FormAdd = {
   id?: number;
   title: string;
-  imageUrl: string;
+  imageURL: string;
   date: string;
   rules: boolean;
   category: string;

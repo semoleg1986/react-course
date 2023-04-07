@@ -18,7 +18,7 @@ const FormInput: React.FC<{
     const product = {
       id: Date.now(),
       ...data,
-      imageUrl: URL.createObjectURL(data.imageUrl[0] as unknown as Blob),
+      imageURL: URL.createObjectURL(data.imageURL[0] as unknown as Blob),
     };
     reset();
     onAddCard(product);
@@ -110,12 +110,12 @@ const FormInput: React.FC<{
             className="form-input"
             type="file"
             accept=".jpg, .jpeg, .png"
-            id="imageUrl"
-            {...register('imageUrl', {
+            id="imageURL"
+            {...register('imageURL', {
               required: 'The field is required',
             })}
           />
-          <p className="form-error">{errors.imageUrl?.message && errors.imageUrl.message}</p>
+          <p className="form-error">{errors.imageURL?.message && errors.imageURL.message}</p>
         </div>
         <div className="form-box">
           <label className="form-checkbox-label">

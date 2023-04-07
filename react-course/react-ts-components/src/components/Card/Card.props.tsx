@@ -1,7 +1,7 @@
 export interface ICard {
   id: number;
   title: string;
-  imageUrl: string;
+  imageURL: string;
   date: string;
   rules: boolean;
   category: string;
