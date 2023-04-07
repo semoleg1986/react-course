@@ -1,6 +1,6 @@
 import React from 'react';
 import './Card.css';
-import { IMovie } from '../Cards/Cards';
+import { IMovie } from './Card.props';
 
 interface ICard {
   key: string;

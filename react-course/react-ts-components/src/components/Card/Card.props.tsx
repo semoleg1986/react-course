@@ -7,3 +7,10 @@ export interface ICard {
   category: string;
   brand: string;
 }
+
+export interface IMovie {
+  id: string;
+  name: string;
+  poster_path: string;
+  first_air_date: string;
+}

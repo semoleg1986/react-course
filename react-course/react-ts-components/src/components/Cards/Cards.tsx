@@ -3,13 +3,7 @@ import ApiService from '../../services/ApiServ';
 import Card from '../Card/Card';
 import './Cards.css';
 import axios from 'axios';
-
-export interface IMovie {
-  key: string;
-  name: string;
-  poster_path: string;
-  first_air_date: string;
-}
+import { IMovie } from '../Card/Card.props';
 
 const Cards = () => {
   const [movies, setMovies] = useState<IMovie[]>([]);
@@ -32,8 +26,8 @@ const Cards = () => {
 
   return (
     <div className="post-container">
-      {movies.map((i) => (
-        <Card key={i.key} movie={i} />
+      {movies.map((item) => (
+        <Card key={item.id} movie={item} />
       ))}
     </div>
   );
