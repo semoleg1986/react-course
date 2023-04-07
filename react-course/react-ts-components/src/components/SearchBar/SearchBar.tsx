@@ -3,14 +3,17 @@ import './SearchBar.css';
 import { BsSearch } from 'react-icons/bs';
 
 const SearchBar = () => {
-  const [value, setValue] = useState<string>(() => localStorage.getItem('search') ?? '');
+  const [searchValue, setSearchValue] = useState<string>(
+    () => localStorage.getItem('search') ?? ''
+  );
+  const [isLoading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
-    localStorage.setItem('search', value);
-  }, [value]);
+    localStorage.setItem('search', searchValue);
+  }, [searchValue]);
 
   const handleChange = (event: React.FormEvent<HTMLInputElement>) => {
-    setValue(event.currentTarget.value);
+    setSearchValue(event.currentTarget.value);
   };
 
   return (
@@ -19,7 +22,13 @@ const SearchBar = () => {
         <i>
           <BsSearch />
         </i>
-        <input type="text" onChange={handleChange} placeholder="Search bar" value={value} />
+        <input
+          type="text"
+          onChange={handleChange}
+          placeholder="Search bar"
+          value={searchValue}
+          disabled={isLoading}
+        />
       </div>
     </div>
   );
