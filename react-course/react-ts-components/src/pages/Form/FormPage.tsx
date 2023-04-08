@@ -1,8 +1,8 @@
 import { useState, useCallback } from 'react';
 import FormInput from '../../components/Form/FormInput';
 import { ICard } from '../../components/Card/Card.props';
-import Card from '../../components/Card/Card';
 import '../../components/Cards/Cards.css';
+import CardOrd from '../../components/Card/Card_ord';
 
 const Forms = () => {
   const [products, setProducts] = useState<ICard[]>([]);
@@ -16,7 +16,7 @@ const Forms = () => {
       <FormInput onAddCard={updateProduct} />
       <div className="post-container">
         {products?.map((product) => (
-          <Card key={product.id} product={product} />
+          <CardOrd key={product.id} product={product} />
         ))}
       </div>
     </div>
