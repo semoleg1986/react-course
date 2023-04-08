@@ -5,7 +5,7 @@ import { MemoryRouter, Route, Routes } from 'react-router-dom';
 describe('Card', () => {
   it('renders Card component with correct data', () => {
     const movie = {
-      id: 1,
+      id: 'asdas',
       name: 'Terminator',
       poster_path: '/image',
       overview: 'some some long text',

@@ -2,7 +2,7 @@ import { ICard } from './Card.props';
 describe('ICard interface', () => {
   test('has required properties', () => {
     const card: ICard = {
-      id: 1,
+      id: 'asdasd',
       title: 'Test Card',
       imageURL: 'https://example.com/image.png',
       date: '2024-12-01',

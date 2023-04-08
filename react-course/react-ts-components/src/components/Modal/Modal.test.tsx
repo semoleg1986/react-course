@@ -5,7 +5,7 @@ import { MemoryRouter, Route, Routes } from 'react-router-dom';
 describe('Modal', () => {
   it('renders Modal component with correct data', () => {
     const movie = {
-      id: 1,
+      id: 'as',
       name: 'Terminator',
       overview: 'Some some long text',
       poster_path: '/image',
