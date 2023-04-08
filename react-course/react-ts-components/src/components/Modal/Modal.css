@@ -7,6 +7,7 @@
     height: 100%;
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.4);
+    animation: modal-fade-in 0.5s ease-in-out;
   }
   
   .modal-content {
@@ -17,6 +18,7 @@
     width: 80%;
     max-width: 600px;
     position: relative;
+    animation: modal-slide-in 0.5s ease-in-out;
   }
   
   .close {
@@ -24,6 +26,7 @@
     float: right;
     font-size: 28px;
     font-weight: bold;
+    transition: color 0.2s;
   }
   
   .close:hover,
@@ -31,5 +34,25 @@
     color: black;
     text-decoration: none;
     cursor: pointer;
+  }
+  
+  @keyframes modal-fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes modal-slide-in {
+    from {
+      transform: translateY(-50px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
   }
   

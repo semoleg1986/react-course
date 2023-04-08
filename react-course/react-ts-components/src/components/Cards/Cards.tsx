@@ -4,10 +4,10 @@ import Card from '../Card/Card';
 import './Cards.css';
 import { IMovie } from '../Card/Card.props';
 import Modal from '../Modal/Modal';
+import Overlay from '../Overlay/Overlay';
 
 const Cards = () => {
   const [movies, setMovies] = useState<IMovie[]>([]);
-
   const [selectedMovie, setSelectedMovie] = useState<IMovie | null>(null);
   const [showModal, setShowModal] = useState(false);
 
@@ -24,13 +24,20 @@ const Cards = () => {
     setShowModal(true);
   };
 
+  const handleCloseModal = () => {
+    setSelectedMovie(null);
+    setShowModal(false);
+  };
+
   return (
     <div className="post-container">
       {movies.map((item) => (
         <Card key={item.id} movie={item} onClick={() => handleCardClick(item)} />
       ))}
       {showModal && selectedMovie && (
-        <Modal movie={selectedMovie} onClose={() => setShowModal(false)} />
+        <Overlay onClick={handleCloseModal}>
+          <Modal movie={selectedMovie} onClose={handleCloseModal} />
+        </Overlay>
       )}
     </div>
   );
