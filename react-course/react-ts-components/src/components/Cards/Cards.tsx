@@ -6,18 +6,27 @@ import { IMovie } from '../Card/Card.props';
 import Modal from '../Modal/Modal';
 import Overlay from '../Overlay/Overlay';
 
-const Cards = () => {
+type CardsProps = {
+  searchQuery: string | null;
+};
+
+const Cards = ({ searchQuery }: CardsProps) => {
   const [movies, setMovies] = useState<IMovie[]>([]);
   const [selectedMovie, setSelectedMovie] = useState<IMovie | null>(null);
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     const fetchMovies = async () => {
-      const { data } = await ApiService.get('tv/popular');
-      setMovies(data.results);
+      if (searchQuery) {
+        const { data } = await ApiService.get(`search/tv?query=${searchQuery}`);
+        setMovies(data.results);
+      } else {
+        const { data } = await ApiService.get('tv/popular');
+        setMovies(data.results);
+      }
     };
     fetchMovies();
-  }, []);
+  }, [searchQuery]);
 
   const handleCardClick = (movie: IMovie) => {
     setSelectedMovie(movie);

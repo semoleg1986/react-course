@@ -1,19 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './SearchBar.css';
 import { BsSearch } from 'react-icons/bs';
 
-const SearchBar = () => {
+interface SearchBarProps {
+  onSearch: (query: string) => void;
+}
+
+const SearchBar = ({ onSearch }: SearchBarProps) => {
   const [searchValue, setSearchValue] = useState<string>(
     () => localStorage.getItem('search') ?? ''
   );
-  const [isLoading, setLoading] = useState<boolean>(false);
-
-  useEffect(() => {
-    localStorage.setItem('search', searchValue);
-  }, [searchValue]);
 
   const handleChange = (event: React.FormEvent<HTMLInputElement>) => {
     setSearchValue(event.currentTarget.value);
+  };
+
+  const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
+      onSearch(searchValue);
+    }
   };
 
   return (
@@ -25,9 +30,9 @@ const SearchBar = () => {
         <input
           type="text"
           onChange={handleChange}
+          onKeyPress={handleKeyPress}
           placeholder="Search bar"
           value={searchValue}
-          disabled={isLoading}
         />
       </div>
     </div>
