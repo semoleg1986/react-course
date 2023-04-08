@@ -1,5 +1,5 @@
 export interface ICard {
-  id: string;
+  id: number;
   title: string;
   imageURL: string;
   date: string;
@@ -9,7 +9,7 @@ export interface ICard {
 }
 
 export interface IMovie {
-  id: string;
+  id: number;
   name: string;
   poster_path: string;
   first_air_date: string;
