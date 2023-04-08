@@ -1,17 +1,15 @@
-import { NavLink, Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
+import Header from './Header/Header';
 
-function Layout() {
+const Layout = () => {
   return (
     <>
-      <header>
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="/about">About</NavLink>
-      </header>
+      <Header />
       <main className="container">
         <Outlet />
       </main>
     </>
   );
-}
+};
 
 export default Layout;
