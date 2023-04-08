@@ -1,28 +1,28 @@
 import { render, screen } from '@testing-library/react';
-import Card from './Card';
+import Modal from './Modal';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
 
-describe('Card', () => {
-  it('renders Card component with correct data', () => {
+describe('Modal', () => {
+  it('renders Modal component with correct data', () => {
     const movie = {
       id: 1,
       name: 'Terminator',
+      overview: 'Some some long text',
       poster_path: '/image',
-      overview: 'some some long text',
       first_air_date: '12-02-2003',
     };
     render(
       <MemoryRouter initialEntries={['/']}>
         <Routes>
-          <Route path="/" element={<Card movie={movie} onClick={() => {}} />} />
+          <Route path="/" element={<Modal movie={movie} onClose={() => {}} />} />
         </Routes>
       </MemoryRouter>
     );
     expect(screen.getByText(movie.name)).toBeInTheDocument();
+    expect(screen.getByText(movie.overview)).toBeInTheDocument();
     expect(screen.getByAltText(movie.name)).toHaveAttribute(
       'src',
       `https://www.themoviedb.org/t/p/w220_and_h330_face/${movie.poster_path}`
     );
-    expect(screen.getByTestId('post')).toBeInTheDocument();
   });
 });

@@ -4,7 +4,7 @@ describe('ICard interface', () => {
     const card: ICard = {
       id: 1,
       title: 'Test Card',
-      imageUrl: 'https://example.com/image.png',
+      imageURL: 'https://example.com/image.png',
       date: '2024-12-01',
       rules: true,
       category: 'Test Category',
@@ -14,7 +14,7 @@ describe('ICard interface', () => {
     expect(card).toBeDefined();
     expect(card.id).toBeDefined();
     expect(card.title).toBeDefined();
-    expect(card.imageUrl).toBeDefined();
+    expect(card.imageURL).toBeDefined();
     expect(card.date).toBeDefined();
     expect(card.rules).toBeDefined();
     expect(card.category).toBeDefined();

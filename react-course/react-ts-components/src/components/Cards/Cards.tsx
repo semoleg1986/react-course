@@ -51,7 +51,7 @@ const Cards = ({ searchQuery }: CardsProps) => {
       {isLoading ? (
         <ProgressIndicator />
       ) : movies.length === 0 ? (
-        <p>No movies found</p>
+        <h3>No movies found</h3>
       ) : (
         movies.map((item) => (
           <Card key={item.id} movie={item} onClick={() => handleCardClick(item)} />
