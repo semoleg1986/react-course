@@ -5,6 +5,7 @@ import './Cards.css';
 import { IMovie } from '../Card/Card.props';
 import Modal from '../Modal/Modal';
 import Overlay from '../Overlay/Overlay';
+import ProgressIndicator from '../ProgressIndicator/ProgressIndicator';
 
 type CardsProps = {
   searchQuery: string | null;
@@ -14,16 +15,23 @@ const Cards = ({ searchQuery }: CardsProps) => {
   const [movies, setMovies] = useState<IMovie[]>([]);
   const [selectedMovie, setSelectedMovie] = useState<IMovie | null>(null);
   const [showModal, setShowModal] = useState(false);
+  const [isLoading, setLoading] = useState(false);
 
   useEffect(() => {
     const fetchMovies = async () => {
-      if (searchQuery) {
-        const { data } = await ApiService.get(`search/tv?query=${searchQuery}`);
-        setMovies(data.results);
-      } else {
-        const { data } = await ApiService.get('tv/popular');
-        setMovies(data.results);
+      setLoading(true);
+      try {
+        if (searchQuery) {
+          const { data } = await ApiService.get(`search/tv?query=${searchQuery}`);
+          setMovies(data.results);
+        } else {
+          const { data } = await ApiService.get('tv/popular');
+          setMovies(data.results);
+        }
+      } catch (error) {
+        console.error(error);
       }
+      setLoading(false);
     };
     fetchMovies();
   }, [searchQuery]);
@@ -40,9 +48,13 @@ const Cards = ({ searchQuery }: CardsProps) => {
 
   return (
     <div className="post-container">
-      {movies.map((item) => (
-        <Card key={item.id} movie={item} onClick={() => handleCardClick(item)} />
-      ))}
+      {isLoading ? (
+        <ProgressIndicator />
+      ) : (
+        movies.map((item) => (
+          <Card key={item.id} movie={item} onClick={() => handleCardClick(item)} />
+        ))
+      )}
       {showModal && selectedMovie && (
         <Overlay onClick={handleCloseModal}>
           <Modal movie={selectedMovie} onClose={handleCloseModal} />
