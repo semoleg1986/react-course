@@ -12,9 +12,13 @@ const getPosterURL = (poster_path: string) => {
 };
 
 const Modal = ({ movie, onClose }: IModal) => {
+  const handleContentClick = (event: React.MouseEvent<HTMLDivElement>) => {
+    event.stopPropagation();
+  };
+
   return (
-    <div className="modal">
-      <div className="modal-content">
+    <div className="modal" onClick={onClose}>
+      <div className="modal-content" onClick={handleContentClick}>
         <span className="close" onClick={onClose}>
           &times;
         </span>
