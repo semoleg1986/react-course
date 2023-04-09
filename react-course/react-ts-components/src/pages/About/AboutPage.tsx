@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 const About = () => {
   return (
     <div>
@@ -7,9 +6,5 @@ const About = () => {
     </div>
   );
 };
-=======
-import React from 'react';
-import { IRouter } from '../type';
->>>>>>> parent of 8f3afe8 (Summary)
 
 export default About;
