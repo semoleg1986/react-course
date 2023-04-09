@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 import React, { useState } from 'react';
+=======
+import React from 'react';
+import { MyInput } from './SearchInput';
+>>>>>>> parent of 8f3afe8 (Summary)
 import './SearchBar.css';
 import { BsSearch } from 'react-icons/bs';
 import { useEffect } from 'react';
@@ -21,6 +26,7 @@ const SearchBar = ({ onSearch }: SearchBarProps) => {
     setSearchValue(event.currentTarget.value);
   };
 
+<<<<<<< HEAD
   const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter') {
       localStorage.setItem('search', searchValue);
@@ -35,6 +41,12 @@ const SearchBar = ({ onSearch }: SearchBarProps) => {
           <BsSearch />
         </i>
         <input
+=======
+  render(): React.ReactNode {
+    return (
+      <div className="box">
+        <MyInput
+>>>>>>> parent of 8f3afe8 (Summary)
           type="text"
           onChange={handleChange}
           onKeyPress={handleKeyPress}
