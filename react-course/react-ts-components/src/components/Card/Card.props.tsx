@@ -14,4 +14,5 @@ export interface IMovie {
   poster_path: string;
   first_air_date: string;
   overview: string;
+  vote_average: number;
 }
