@@ -1,6 +1,6 @@
 import React from 'react';
-import { ICard } from '../Card/Card.props';
-import '../Card/Card.css';
+import { ICard } from './Card.props';
+import './Card.css';
 
 interface Card {
   product: ICard;
@@ -13,7 +13,7 @@ const CardOrd = ({ product }: Card) => {
       <h2>{product.title}</h2>
       <p>{product.date}</p>
       <div className="post-brand">
-        gender: <span>{product.gender}</span>{' '}
+        brand: <span>{product.brand}</span>{' '}
       </div>
       <div className="post-category">
         category: <span>{product.category}</span>{' '}
