@@ -10,6 +10,7 @@ describe('Card', () => {
       poster_path: '/image',
       overview: 'some some long text',
       first_air_date: '12-02-2003',
+      vote_average: 7,
     };
     render(
       <MemoryRouter initialEntries={['/']}>

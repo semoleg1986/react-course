@@ -9,6 +9,35 @@
 .post img {
   max-width: 100%;
 }
+.post h5 {
+  margin: 10px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  color: cornflowerblue;
+  font-style: italic;
+}
+.info {
+  display: flex;
+  justify-content: space-around;
+}
+.raiting{
+  width: 40%;
+  background-color: #f3ce13;
+  color: white;
+  font-weight: 400;
+}
+.date {
+  font-weight: 600;
+}
+
+span {
+  color: black;
+  font-weight: 600;
+  padding-right: 5px;
+}
 .post:hover {
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
   transform: translateY(-5px);
