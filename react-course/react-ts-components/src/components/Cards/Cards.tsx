@@ -1,4 +1,4 @@
-import { useSearchMoviesQuery, useGetPopularMoviesQuery } from '../../services/movieApi';
+import { useSearchMoviesQuery, useGetPopularMoviesQuery } from '../../store/services/movieApi';
 import { IMovie, IMovieResult } from '../Card/Card.props';
 import Card from '../Card/Card';
 import Modal from '../Modal/Modal';
