@@ -4,7 +4,7 @@ import { ICard } from '../../components/Card/Card.props';
 import '../../components/Cards/Cards.css';
 import CardOrd from '../../components/Card/Card_ord';
 import { RootState } from '../../store/store';
-import { addCard } from '../../store/slices/formSlice';
+import { addCard, removeCard } from '../../store/slices/formSlice';
 
 const Forms = () => {
   const dispatch = useDispatch();
@@ -13,6 +13,9 @@ const Forms = () => {
   const updateProduct = (newCard: ICard) => {
     dispatch(addCard(newCard));
   };
+  const handleRemoveCard = (id: number) => {
+    dispatch(removeCard(id));
+  };
 
   return (
     <div>
@@ -20,7 +23,7 @@ const Forms = () => {
       <FormInput onAddCard={updateProduct} />
       <div className="post-container">
         {products?.map((product) => (
-          <CardOrd key={product.id} product={product} />
+          <CardOrd key={product.id} product={product} onRemove={handleRemoveCard} />
         ))}
       </div>
     </div>
