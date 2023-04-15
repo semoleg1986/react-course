@@ -8,6 +8,12 @@ export const movieApi = createApi({
   reducerPath: 'movieApi',
   baseQuery: fetchBaseQuery({ baseUrl: BASE_URL }),
   endpoints: (builder) => ({
+    searchMovies: builder.query<IMovieResult, string>({
+      query: (searchQuery) => ({
+        url: `/search/tv`,
+        params: { query: searchQuery, api_key: API_KEY },
+      }),
+    }),
     getPopularMovies: builder.query<IMovieResult[], number>({
       query: (page = 1) => ({
         url: `/tv/popular`,
@@ -23,4 +29,4 @@ export const movieApi = createApi({
   }),
 });
 
-export const { useGetPopularMoviesQuery, useGetMovieDetailsQuery } = movieApi;
+export const { useGetPopularMoviesQuery, useGetMovieDetailsQuery, useSearchMoviesQuery } = movieApi;

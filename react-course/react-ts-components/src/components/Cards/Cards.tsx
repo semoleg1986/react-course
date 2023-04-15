@@ -1,35 +1,32 @@
-import { useGetPopularMoviesQuery } from '../../store/services/movieApi';
+import { useSearchMoviesQuery, useGetPopularMoviesQuery } from '../../store/services/movieApi';
 import { IMovie, IMovieResult } from '../Card/Card.props';
 import Card from '../Card/Card';
 import Modal from '../Modal/Modal';
 import './Cards.css';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../store/store';
 import { useState } from 'react';
+import ProgressIndicator from '../ProgressIndicator/ProgressIndicator';
 
 interface CardsProps {
-  searchQuery: string;
+  searchQuery?: string;
 }
 
 const Cards = ({ searchQuery }: CardsProps) => {
-  const { data: movieResult = {}, isFetching } = useGetPopularMoviesQuery(1);
+  const movieQuery = searchQuery ? useSearchMoviesQuery(searchQuery) : useGetPopularMoviesQuery(1);
+  const { data: movieResult = {}, isFetching } = movieQuery;
   const { results: movies = [] } = movieResult as IMovieResult;
   const [selectedMovie, setSelectedMovie] = useState<IMovie | null>(null);
-  const filteredMovies = useSelector((state: RootState) =>
-    movies.filter((movie) => movie.name.toLowerCase().includes(searchQuery.toLowerCase()))
-  );
 
   const handleCardClick = (movie: IMovie) => {
     setSelectedMovie(movie);
   };
 
   if (isFetching) {
-    return <div>Loading...</div>;
+    return <ProgressIndicator></ProgressIndicator>;
   }
 
   return (
     <div className="post-container">
-      {filteredMovies.map((movie: IMovie) => (
+      {movies.map((movie: IMovie) => (
         <div key={movie.id}>
           <Card movie={movie} onClick={() => handleCardClick(movie)} />
         </div>
