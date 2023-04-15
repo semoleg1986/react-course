@@ -1,17 +1,20 @@
 import Cards from '../../components/Cards/Cards';
 import SearchBar from '../../components/SearchBar/SearchBar';
-import { useState } from 'react';
+import { setSearchQuery } from '../../store/slices/searchSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../store/store';
 
 const Home = () => {
-  const [searchQuery, setSearchQuery] = useState<string>('');
+  const dispatch = useDispatch();
+  const searchQuery = useSelector((state: RootState) => state.search.query);
 
   const handleSearch = (query: string) => {
-    setSearchQuery(query);
+    dispatch(setSearchQuery(query));
   };
 
   return (
     <>
-      <SearchBar onSearch={handleSearch} />
+      <SearchBar searchQuery={searchQuery} onSearch={handleSearch} />
       <Cards searchQuery={searchQuery} />
     </>
   );
