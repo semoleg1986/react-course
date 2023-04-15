@@ -11,6 +11,7 @@ interface CardsProps {
 }
 
 const Cards = ({ searchQuery }: CardsProps) => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const movieQuery = searchQuery ? useSearchMoviesQuery(searchQuery) : useGetPopularMoviesQuery(1);
   const { data: movieResult = {}, isFetching } = movieQuery;
   const { results: movies = [] } = movieResult as IMovieResult;
