@@ -1,7 +1,9 @@
 import { useGetPopularMoviesQuery } from '../../store/services/movieApi';
 import { IMovie, IMovieResult } from '../Card/Card.props';
+import Card from '../Card/Card';
+import './Cards.css';
 
-const Cards = () => {
+export default function Cards() {
   const { data: movieResult = {}, isFetching } = useGetPopularMoviesQuery(1);
   const { results: movies = [] } = movieResult as IMovieResult;
 
@@ -10,14 +12,10 @@ const Cards = () => {
   }
 
   return (
-    <div>
+    <div className="post-container">
       {movies.map((movie: IMovie) => (
-        <div key={movie.id}>
-          <h2>{movie.name}</h2>
-        </div>
+        <Card key={movie.id} movie={movie} />
       ))}
     </div>
   );
-};
-
-export default Cards;
+}

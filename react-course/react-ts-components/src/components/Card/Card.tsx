@@ -3,7 +3,7 @@ import './Card.css';
 import { IMovie } from './Card.props';
 import image from '../../assets/no-image.png';
 
-interface ICard {
+interface ICardProps {
   movie: IMovie;
   onClick: () => void;
 }
@@ -11,8 +11,10 @@ interface ICard {
 const getPosterURL = (poster_path: string) => {
   return `https://www.themoviedb.org/t/p/w220_and_h330_face/${poster_path}`;
 };
+
 const defaultPosterURL = image;
-const Card = ({ movie, onClick }: ICard) => {
+
+export default function Card({ movie, onClick }: ICardProps) {
   return (
     <div className="post" data-testid="post" onClick={onClick}>
       <img
@@ -31,6 +33,4 @@ const Card = ({ movie, onClick }: ICard) => {
       </div>
     </div>
   );
-};
-
-export default Card;
+}
