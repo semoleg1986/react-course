@@ -1,67 +1,21 @@
-import React, { useEffect, useState } from 'react';
-import ApiService from '../../services/ApiServ';
-import Card from '../Card/Card';
-import './Cards.css';
-import { IMovie } from '../Card/Card.props';
-import Modal from '../Modal/Modal';
-import Overlay from '../Overlay/Overlay';
-import ProgressIndicator from '../ProgressIndicator/ProgressIndicator';
+import { useGetPopularMoviesQuery } from '../../store/services/movieApi';
+import { IMovie, IMovieResult } from '../Card/Card.props';
 
-type CardsProps = {
-  searchQuery: string | null;
-};
+const Cards = () => {
+  const { data: movieResult = {}, isFetching } = useGetPopularMoviesQuery(1);
+  const { results: movies = [] } = movieResult as IMovieResult;
 
-const Cards = ({ searchQuery }: CardsProps) => {
-  const [movies, setMovies] = useState<IMovie[]>([]);
-  const [selectedMovie, setSelectedMovie] = useState<IMovie | null>(null);
-  const [showModal, setShowModal] = useState(false);
-  const [isLoading, setLoading] = useState(false);
-
-  useEffect(() => {
-    const fetchMovies = async () => {
-      setLoading(true);
-      try {
-        if (searchQuery) {
-          const { data } = await ApiService.get(`search/tv?query=${searchQuery}`);
-          setMovies(data.results);
-        } else {
-          const { data } = await ApiService.get('tv/popular');
-          setMovies(data.results);
-        }
-      } catch (error) {
-        console.error(error);
-      }
-      setLoading(false);
-    };
-    fetchMovies();
-  }, [searchQuery]);
-
-  const handleCardClick = (movie: IMovie) => {
-    setSelectedMovie(movie);
-    setShowModal(true);
-  };
-
-  const handleCloseModal = () => {
-    setSelectedMovie(null);
-    setShowModal(false);
-  };
+  if (isFetching) {
+    return <div>Loading...</div>;
+  }
 
   return (
-    <div className="post-container">
-      {isLoading ? (
-        <ProgressIndicator />
-      ) : movies.length === 0 ? (
-        <h3>No movies found</h3>
-      ) : (
-        movies.map((item) => (
-          <Card key={item.id} movie={item} onClick={() => handleCardClick(item)} />
-        ))
-      )}
-      {showModal && selectedMovie && (
-        <Overlay onClick={handleCloseModal}>
-          <Modal movie={selectedMovie} onClose={handleCloseModal} />
-        </Overlay>
-      )}
+    <div>
+      {movies.map((movie: IMovie) => (
+        <div key={movie.id}>
+          <h2>{movie.name}</h2>
+        </div>
+      ))}
     </div>
   );
 };

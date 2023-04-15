@@ -16,3 +16,6 @@ export interface IMovie {
   overview: string;
   vote_average: number;
 }
+export interface IMovieResult {
+  results: IMovie[];
+}
