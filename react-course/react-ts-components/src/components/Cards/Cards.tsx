@@ -1,4 +1,4 @@
-import { useSearchMoviesQuery, useGetPopularMoviesQuery } from '../../store/services/movieApi';
+import { useSearchMoviesQuery, useGetPopularMoviesQuery } from '../../services/movieApi';
 import { IMovie, IMovieResult } from '../Card/Card.props';
 import Card from '../Card/Card';
 import Modal from '../Modal/Modal';
@@ -11,8 +11,9 @@ interface CardsProps {
 }
 
 const Cards = ({ searchQuery }: CardsProps) => {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const movieQuery = searchQuery ? useSearchMoviesQuery(searchQuery) : useGetPopularMoviesQuery(1);
+  const popularMoviesQuery = useGetPopularMoviesQuery(1);
+  const searchMoviesQuery = useSearchMoviesQuery(searchQuery || '');
+  const movieQuery = searchQuery ? searchMoviesQuery : popularMoviesQuery;
   const { data: movieResult = {}, isFetching } = movieQuery;
   const { results: movies = [] } = movieResult as IMovieResult;
   const [selectedMovie, setSelectedMovie] = useState<IMovie | null>(null);

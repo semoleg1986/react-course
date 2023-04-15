@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { movieApi } from './services/movieApi';
+import { movieApi } from '../services/movieApi';
 import formReducer from './slices/formSlice';
 import searchReducer from './slices/searchSlice';
 
