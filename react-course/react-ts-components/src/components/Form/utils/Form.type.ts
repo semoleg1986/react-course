@@ -6,5 +6,5 @@ export type FormAdd = {
   date: string;
   rules: boolean;
   category: string;
-  brand: string;
+  gender: string;
 };
