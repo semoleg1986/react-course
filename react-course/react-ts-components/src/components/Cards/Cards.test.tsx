@@ -18,9 +18,9 @@ describe('Cards', () => {
         </Provider>
       );
     });
-    let someCard = screen.queryByText('my heart relieved');
+    let someCard = screen.queryByText('My Heart Relieved');
     expect(someCard).toBe(null);
-    someCard = await screen.findByText('my heart relieved');
+    someCard = await screen.findByText('My Heart Relieved');
     expect(someCard).toBeInTheDocument();
   });
 });
