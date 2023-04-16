@@ -19,7 +19,6 @@ const Forms = () => {
 
   return (
     <div>
-      <h3>Form</h3>
       <FormInput onAddCard={updateProduct} />
       <div className="post-container">
         {products?.map((product) => (
