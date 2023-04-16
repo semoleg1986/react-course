@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { IMovie, IMovieResult } from '../../components/Card/Card.props';
 
-const API_KEY = 'a5f9c29429f3ee32204af9b3691e7d08';
+const API_KEY = import.meta.env.VITE_SOME_KEY;
 const BASE_URL = 'https://api.themoviedb.org/3';
 
 export const movieApi = createApi({
