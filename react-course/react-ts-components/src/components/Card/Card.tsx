@@ -7,21 +7,19 @@ interface ICardProps {
   movie: IMovie;
   onClick: () => void;
 }
+const defaultPosterURL = image;
 
-const getPosterURL = (poster_path: string) => {
+const getPosterURL = (poster_path: string | null | undefined) => {
+  if (!poster_path) {
+    return defaultPosterURL;
+  }
   return `https://www.themoviedb.org/t/p/w220_and_h330_face/${poster_path}`;
 };
-
-const defaultPosterURL = image;
 
 export default function Card({ movie, onClick }: ICardProps) {
   return (
     <div className="post" data-testid="post" onClick={onClick}>
-      <img
-        src={movie.poster_path ? getPosterURL(movie.poster_path) : defaultPosterURL}
-        alt={movie.name}
-        width="200"
-      />
+      <img src={getPosterURL(movie.poster_path)} alt={movie.name} width="200" />
       <h5>{movie.name}</h5>
 
       <div className="info">
