@@ -9,7 +9,7 @@ interface SearchBarProps {
 
 const SearchBar = ({ searchQuery, onSearch }: SearchBarProps) => {
   const [query, setQuery] = useState(searchQuery);
-  const [searchOnType, setSearchOnType] = useState(false);
+  const [searchOnType] = useState(false);
 
   useEffect(() => {
     setQuery(searchQuery);
@@ -30,14 +30,6 @@ const SearchBar = ({ searchQuery, onSearch }: SearchBarProps) => {
     }
   };
 
-  const handleButtonClick = () => {
-    onSearch(query);
-  };
-
-  const toggleSearchOnType = () => {
-    setSearchOnType(!searchOnType);
-  };
-
   return (
     <div className="box">
       <div className="searchBar">
@@ -51,13 +43,6 @@ const SearchBar = ({ searchQuery, onSearch }: SearchBarProps) => {
           placeholder="Search bar"
           value={query}
         />
-        <button type="button" onClick={handleButtonClick}>
-          Search
-        </button>
-        <label>
-          <input type="checkbox" checked={searchOnType} onChange={toggleSearchOnType} />
-          Search on type
-        </label>
       </div>
     </div>
   );
