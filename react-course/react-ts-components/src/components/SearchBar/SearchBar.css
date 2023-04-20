@@ -3,8 +3,8 @@
     justify-content: center;
     align-items: center;
     margin-bottom: 20px;
-}
-.searchBar {
+  }
+  .searchBar {
     margin-top: 20px;
     width: 300px;
     height: 40px;
@@ -14,21 +14,38 @@
     align-items: center;
     border: 1px solid black;
     padding: 10px;
-
-}
-.searchBar> i {
+  }
+  .searchBar > i {
     font-size: 20px;
     color: #777;
-}
-.searchBar >input {
+  }
+  .searchBar > input {
     flex: 1;
     height: 40px;
     border: none;
     outline: none;
     font-size: 20px;
     padding-left: 10px;
-}
-
-.searchBar input:focus {
+  }
+  .searchBar > button {
+    margin-left: 10px;
+    height: 40px;
+    padding: 0 20px;
+    background-color: #0077cc;
+    color: white;
+    font-size: 20px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+  .searchBar > button:hover {
+    background-color: #0066b3;
+  }
+  .searchBar > button:focus {
     outline: none;
-}
+  }
+  
+  .searchBar > input:focus {
+    outline: none;
+  }
+  

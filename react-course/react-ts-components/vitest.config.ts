@@ -17,7 +17,12 @@ export default defineConfig({
       reporter: ['text'],
       all: true,
       include: ['src//', 'src/**/Htag.props.tsx'],
-      exclude: ['src/**/*.d.ts', 'src/**/*.ts'],
+      exclude: [
+        'src/**/*.d.ts',
+        'src/**/*.ts',
+        'src/main.tsx',
+        'src/components/Card/Card.props.tsx',
+      ],
     },
   },
 });

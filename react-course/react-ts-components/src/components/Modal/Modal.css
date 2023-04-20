@@ -35,6 +35,27 @@
     text-decoration: none;
     cursor: pointer;
   }
+  .info {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  .raiting{
+    width: 40%;
+    background-color: #f3ce13;
+    color: white;
+    font-weight: 400;
+  }
+  .date {
+    font-weight: 600;
+  }
+  
+  span {
+    color: black;
+    font-weight: 600;
+    padding-right: 5px;
+  }
   
   @keyframes modal-fade-in {
     from {

@@ -13,6 +13,14 @@ const FormInput: React.FC<{
     formState: { errors },
     reset,
   } = useForm<FormAdd>({ reValidateMode: 'onSubmit' });
+  const validateDate = (date: string) => {
+    const today = new Date();
+    const inputDate = new Date(date);
+    if (inputDate > today) {
+      return 'Date should be no later than today';
+    }
+    return true;
+  };
   const [formMessage, setFormMessage] = useState<boolean>(false);
   const handleProduct: SubmitHandler<FormAdd> = (data) => {
     const product = {
@@ -29,15 +37,15 @@ const FormInput: React.FC<{
     <div className="box-form">
       <form role="form" onSubmit={handleSubmit(handleProduct)} noValidate>
         <div className="form-box">
-          <label className="form-label" htmlFor="title">
-            Title:
+          <label className="form-label" htmlFor="name">
+            First Name:
           </label>
           <input
             className="form-input"
             type="text"
-            id="title"
+            id="name"
             placeholder="Enter title"
-            {...register('title', {
+            {...register('name', {
               required: 'The field is required',
               pattern: {
                 value: /^[A-Z].*/,
@@ -45,34 +53,53 @@ const FormInput: React.FC<{
               },
             })}
           />
-          <p className="form-error">{errors.title?.message && errors.title.message}</p>
+          <p className="form-error">{errors.name?.message && errors.name.message}</p>
+        </div>
+        <div className="form-box">
+          <label className="form-label" htmlFor="surname">
+            Last name:
+          </label>
+          <input
+            className="form-input"
+            type="text"
+            id="surname"
+            placeholder="Enter title"
+            {...register('surname', {
+              required: 'The field is required',
+              pattern: {
+                value: /^[A-Z].*/,
+                message: 'Start with a capital letter',
+              },
+            })}
+          />
+          <p className="form-error">{errors.surname?.message && errors.surname.message}</p>
         </div>
         <div className="form-box">
           <label className="form-label" htmlFor="date">
-            Date:
+            Date of Birth:
           </label>
           <input
             className="form-input"
             type="date"
             id="date"
-            {...register('date', { required: 'The field is required' })}
+            {...register('date', { required: 'The field is required', validate: validateDate })}
           />
           <p className="form-error">{errors.date?.message && errors.date.message}</p>
         </div>
         <div className="form-box">
-          <label className="form-label" htmlFor="brand">
-            Brand:
+          <label className="form-label" htmlFor="gender">
+            Gender:
           </label>
           <select
             className="form-input"
-            {...register('brand', { required: 'The field is required' })}
+            {...register('gender', { required: 'The field is required' })}
           >
             <option value="">-</option>
-            <option value="Huawei">Huawei</option>
-            <option value="Apple">Apple</option>
-            <option value="Samsung">Samsung</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
           </select>
-          <p className="form-error">{errors.brand?.message && errors.brand.message}</p>
+          <p className="form-error">{errors.gender?.message && errors.gender.message}</p>
         </div>
         <div className="form-box">
           <label className="form-label" htmlFor="category">
@@ -82,25 +109,25 @@ const FormInput: React.FC<{
             <input
               className="form-radio-input"
               type="radio"
-              id="smartphones"
-              value="Smartphones"
+              id="movies"
+              value="Movies"
               {...register('category', {
                 required: 'The field is required',
               })}
             />
-            Smartphones
+            Movies
           </label>
           <label className="form-radio-label">
             <input
               className="form-radio-input"
               type="radio"
-              value="Laptops"
-              id="laptops"
+              value="TV"
+              id="tv"
               {...register('category', {
                 required: 'The field is required',
               })}
             />
-            Laptops
+            TV Shows
           </label>
           <p className="form-error">{errors.category?.message && errors.category.message}</p>
         </div>

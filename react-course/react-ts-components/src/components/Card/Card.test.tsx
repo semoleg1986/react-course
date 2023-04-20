@@ -1,6 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import Card from './Card';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import store from '../../store/store';
 
 describe('Card', () => {
   it('renders Card component with correct data', () => {
@@ -10,12 +12,15 @@ describe('Card', () => {
       poster_path: '/image',
       overview: 'some some long text',
       first_air_date: '12-02-2003',
+      vote_average: 7,
     };
     render(
       <MemoryRouter initialEntries={['/']}>
-        <Routes>
-          <Route path="/" element={<Card movie={movie} onClick={() => {}} />} />
-        </Routes>
+        <Provider store={store}>
+          <Routes>
+            <Route path="/" element={<Card movie={movie} onClick={() => {}} />} />
+          </Routes>
+        </Provider>
       </MemoryRouter>
     );
     expect(screen.getByText(movie.name)).toBeInTheDocument();

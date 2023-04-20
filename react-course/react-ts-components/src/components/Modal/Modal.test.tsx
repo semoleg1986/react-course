@@ -10,6 +10,7 @@ describe('Modal', () => {
       overview: 'Some some long text',
       poster_path: '/image',
       first_air_date: '12-02-2003',
+      vote_average: 4,
     };
     render(
       <MemoryRouter initialEntries={['/']}>

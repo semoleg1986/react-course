@@ -1,19 +1,28 @@
 import React from 'react';
 import { ICard } from './Card.props';
-import './Card.css';
+import './Card_ord.css';
 
 interface Card {
   product: ICard;
+  onRemove: (id: number) => void;
 }
 
-const CardOrd = ({ product }: Card) => {
+const CardOrd = ({ product, onRemove }: Card) => {
+  const handleRemoveClick = () => {
+    onRemove(product.id);
+  };
   return (
     <div className="post" data-testid="post">
-      <img src={product.imageURL} alt={product.title} height="200" />
-      <h2>{product.title}</h2>
+      <span className="post-remove" onClick={handleRemoveClick}>
+        &times;
+      </span>
+      <img src={product.imageURL} alt={product.name} height="200" />
+      <h2>
+        {product.name} {product.surname}
+      </h2>
       <p>{product.date}</p>
       <div className="post-brand">
-        brand: <span>{product.brand}</span>{' '}
+        gender: <span>{product.gender}</span>{' '}
       </div>
       <div className="post-category">
         category: <span>{product.category}</span>{' '}

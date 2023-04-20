@@ -1,9 +1,20 @@
-import { render, screen } from '@testing-library/react';
+import React from 'react';
+import { render } from '@testing-library/react';
+import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import store from '../../store/store';
 import Forms from './FormPage';
 
-describe('renders learn react link', () => {
-  test('render App', () => {
-    render(<Forms />);
-    expect(screen.getByText(/Form/i)).toBeInTheDocument();
+describe('Forms', () => {
+  it('renders join us form', () => {
+    const { getByText } = render(
+      <Provider store={store}>
+        <BrowserRouter>
+          <Forms />
+        </BrowserRouter>
+      </Provider>
+    );
+    const joinUsForm = getByText(/First/i);
+    expect(joinUsForm).toBeInTheDocument();
   });
 });
