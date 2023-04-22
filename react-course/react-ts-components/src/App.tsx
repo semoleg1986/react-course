@@ -4,6 +4,7 @@ import Forms from './pages/Form/FormPage';
 import About from './pages/About/AboutPage';
 import NotFoundPage from './pages/404/NotFoundPage';
 import Layout from './components/Layout';
+// import './index.css';
 
 const App = () => {
   return (
