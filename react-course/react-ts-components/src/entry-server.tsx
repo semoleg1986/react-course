@@ -1,20 +1,18 @@
-import ReactDOMServer from 'react-dom/server';
+import ReactDOMServer, { PipeableStream, RenderToPipeableStreamOptions } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom/server';
 import { Provider } from 'react-redux';
 
 import App from './App';
 import store from './store/store';
 
-interface IRenderProps {
-  path: string;
-}
-
-export const render = ({ path }: IRenderProps) => {
-  return ReactDOMServer.renderToString(
+export function render(url: string, options?: RenderToPipeableStreamOptions): PipeableStream {
+  const stream = ReactDOMServer.renderToPipeableStream(
     <Provider store={store}>
-      <StaticRouter location={path}>
+      <StaticRouter location={url}>
         <App />
       </StaticRouter>
-    </Provider>
+    </Provider>,
+    options
   );
-};
+  return stream;
+}

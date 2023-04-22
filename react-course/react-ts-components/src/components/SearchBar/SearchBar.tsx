@@ -1,6 +1,5 @@
 import React from 'react';
 import './SearchBar.css';
-import { BsSearch } from 'react-icons/bs';
 
 interface SearchBarProps {
   searchQuery: string;
@@ -22,9 +21,6 @@ const SearchBar = ({ searchQuery, onSearch }: SearchBarProps) => {
   return (
     <div className="box">
       <div className="searchBar">
-        <i>
-          <BsSearch />
-        </i>
         <input
           type="text"
           onChange={handleChange}
