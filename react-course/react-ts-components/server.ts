@@ -6,6 +6,7 @@ import { createServer as createViteServer } from 'vite';
 import { PipeableStream, RenderToPipeableStreamOptions } from 'react-dom/server';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const port = process.env.PORT || 5177;
 
 async function createServer() {
   const app = express();
@@ -50,8 +51,6 @@ async function createServer() {
       next(err);
     }
   });
-
-  const port = process.env.PORT || 5177;
 
   app.listen(port, () => console.log(`App is listening on http://localhost:${port}`));
 }
