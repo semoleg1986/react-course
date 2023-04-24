@@ -9,7 +9,8 @@
     "preview": "vite preview",
     "lint": "eslint . --fix",
     "test": "vitest run --coverage",
-    "start": "ts-node server.ts"
+    "start": "ts-node server.ts",
+    "cypress:open": "cypress open"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.3",
