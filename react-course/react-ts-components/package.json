@@ -11,7 +11,8 @@
     "lint:fix": "eslint ./src --fix --color",
     "test": "vitest run --coverage",
     "start": "ts-node server.ts",
-    "cypress:open": "cypress open"
+    "cypress:open": "cypress open",
+    "pre-commit": "npm lint:fix"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.3",
@@ -53,10 +54,5 @@
     "typescript": "^4.9.3",
     "vite": "^4.2.0",
     "vitest": "^0.29.3"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run lint:fix"
-    }
   }
 }
