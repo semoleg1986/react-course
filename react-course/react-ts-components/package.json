@@ -10,7 +10,8 @@
     "lint": "eslint . --fix",
     "test": "vitest run --coverage",
     "start": "ts-node server.ts",
-    "cypress:open": "cypress open"
+    "cypress:open": "cypress open",
+    "pre-commit": "lint-staged"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.3",
