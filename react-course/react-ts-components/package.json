@@ -10,8 +10,7 @@
     "lint": "eslint . --fix",
     "test": "vitest run --coverage",
     "start": "ts-node server.ts",
-    "cypress:open": "cypress open",
-    "pre-commit": "lint-staged"
+    "cypress:open": "cypress open"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.3",
@@ -56,13 +55,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "npm run lint"
     }
-  },
-  "lint-staged": {
-    "*.ts": [
-      "npm run lint",
-      "git add"
-    ]
   }
 }
