@@ -22,7 +22,7 @@ async function createServer() {
 
   app.use('*', async (req: Request, res: Response, next: NextFunction) => {
     const url = req.originalUrl;
-
+aassad
     try {
       let template = fs.readFileSync(path.resolve(__dirname, './index.html'), 'utf-8');
 
