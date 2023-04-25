@@ -5,14 +5,14 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "npm run build:client && npm run build:server",
     "preview": "vite preview",
     "lint": "eslint . --fix",
     "lint:fix": "eslint ./src --fix --color",
     "test": "vitest run --coverage",
     "test:clean": "npx rimraf coverage && npx rimraf .nyc_output",
-    "test:e2e": "cross-env NODE_ENV=test cypress open",
-    "test:e2ec": "npm run test:clean && npx cypress run --e2e && npx nyc report && npx nyc report --reporter=text-summary",
+    "test:cy": "cross-env NODE_ENV=test cypress open",
+    "test:cy2": "npm run test:clean && npx cypress run --e2e && npx nyc report && npx nyc report --reporter=text-summary",
     "start": "ts-node server.ts",
     "cypress:open": "cypress open"
   },

@@ -40,7 +40,7 @@ async function createServer() {
           pipe(res);
         },
         onAllReady() {
-          const resHtml = html.join('');
+          const resHtml = html[1];
           res.write(resHtml);
           res.end();
         },
