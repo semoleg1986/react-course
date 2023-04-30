@@ -6,7 +6,7 @@ npm run test
 
 # E2E test:
 
-npm start
+npm run start
 
 npm run test:cy2
 
