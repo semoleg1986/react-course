@@ -11,7 +11,13 @@ describe('Checking everything ', () => {
     cy.url().should('include', '/');
     cy.get('header').contains('a', 'Home');
   });
+  it('checks Form page link works', () => {
+    cy.visit('/');
 
+    cy.get('header').contains('a', 'Form').click();
+    cy.url().should('include', '/form');
+    cy.get('header').contains('a', 'Form');
+  });
   it('checks About page link works', () => {
     cy.visit('/');
 
